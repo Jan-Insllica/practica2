@@ -14,8 +14,8 @@ void setup() {
   digitalWrite(ledPin, LOW);
   Serial.begin(115200);
   delay(1000);
-  Serial.println("=== Sistema de monitoritzacio CPD llest ===");
-  Serial.println("Ordres disponibles: STATUS / LED_OFF");
+  Serial.println("Sistema de monitoritzacio CPD llest");
+  Serial.println("Ordres disponibles: STATUS  LED_OFF");
   Serial.println("==========================================");
 }
 
