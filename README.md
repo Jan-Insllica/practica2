@@ -1,0 +1,59 @@
+Pràctica 2 – Monitorització Ambiental d’un CPD
+Finalitat
+
+Desenvolupar un sistema que permeti monitoritzar les condicions ambientals d’una sala de servidors mitjançant una placa ESP32, alertant automàticament sobre situacions de risc com l’excés de temperatura o la detecció de llum, i permetent la consulta de dades en temps real a través del Monitor Sèrie.
+
+Resum del projecte
+
+L’ESP32 llegeix contínuament les dades d’un sensor de temperatura LM35 i d’un sensor de lluminositat LDR connectats a les seves entrades analògiques.
+
+Quan la temperatura supera els 25 °C, el sistema activa un LED d’alerta i mostra el missatge "ALERTA: Sobreescalfament CPD!". Si l’LDR detecta llum, es mostra el missatge "AVÍS: Porta oberta o llum encesa".
+
+A més, l’usuari pot interactuar amb el sistema a través del Monitor Sèrie enviant comandes per consultar l’estat actual dels sensors o apagar manualment el LED d’alerta.
+
+Funcionament del sistema
+
+Configuració de la comunicació sèrie a una velocitat de 115200 baud.
+
+Enviament d’un missatge inicial indicant que el sistema està preparat per funcionar.
+
+Lectura contínua dels valors analògics proporcionats pel sensor LM35 i el sensor LDR.
+
+Conversió de la lectura del LM35 a temperatura en graus centígrads.
+
+Comprovació permanent dels llindars establerts:
+
+Si la temperatura supera els 25 °C, s’encén el LED i es mostra un missatge d’alerta.
+Si el sensor LDR detecta llum, es mostra un missatge d’avís.
+
+Supervisió de les dades rebudes des del Monitor Sèrie.
+
+Execució de les accions corresponents segons la comanda introduïda per l’usuari.
+
+Retorn d’un missatge informatiu indicant el resultat de cada operació.
+
+Comandes admeses
+
+STATUS: mostra la temperatura actual i el nivell de llum detectat.
+
+LED_OFF: apaga manualment el LED d’alerta.
+
+Les comandes es processen independentment de si s’escriuen en majúscules, minúscules o una combinació de totes dues.
+
+Organització del desenvolupament
+
+El seguiment de les tasques es realitza mitjançant un tauler Kanban a GitHub amb les columnes:
+
+To do
+
+Doing
+
+Done
+
+Resultat final
+
+El sistema permet monitoritzar en temps real les condicions ambientals d’una sala de servidors.
+
+L’usuari pot consultar l’estat dels sensors mitjançant el Monitor Sèrie, rebre avisos automàtics davant situacions de risc i controlar manualment el LED d’alerta.
+
+El funcionament és estable i permet automatitzar la vigilància bàsica d’un CPD utilitzant sensors analògics connectats a una placa ESP32.
