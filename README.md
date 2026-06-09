@@ -3,6 +3,7 @@ Finalitat
 
 Desenvolupar un sistema que permeti monitoritzar les condicions ambientals d’una sala de servidors mitjançant una placa ESP32, alertant automàticament sobre situacions de risc com l’excés de temperatura o la detecció de llum, i permetent la consulta de dades en temps real a través del Monitor Sèrie.
 
+
 Resum del projecte
 
 L’ESP32 llegeix contínuament les dades d’un sensor de temperatura LM35 i d’un sensor de lluminositat LDR connectats a les seves entrades analògiques.
@@ -10,6 +11,7 @@ L’ESP32 llegeix contínuament les dades d’un sensor de temperatura LM35 i d�
 Quan la temperatura supera els 25 °C, el sistema activa un LED d’alerta i mostra el missatge "ALERTA: Sobreescalfament CPD!". Si l’LDR detecta llum, es mostra el missatge "AVÍS: Porta oberta o llum encesa".
 
 A més, l’usuari pot interactuar amb el sistema a través del Monitor Sèrie enviant comandes per consultar l’estat actual dels sensors o apagar manualment el LED d’alerta.
+
 
 Funcionament del sistema
 
@@ -32,6 +34,7 @@ Execució de les accions corresponents segons la comanda introduïda per l’usu
 
 Retorn d’un missatge informatiu indicant el resultat de cada operació.
 
+
 Comandes admeses
 
 STATUS: mostra la temperatura actual i el nivell de llum detectat.
@@ -40,7 +43,7 @@ LED_OFF: apaga manualment el LED d’alerta.
 
 Les comandes es processen independentment de si s’escriuen en majúscules, minúscules o una combinació de totes dues.
 
-Organització del desenvolupament
+
 
 El seguiment de les tasques es realitza mitjançant un tauler Kanban a GitHub amb les columnes:
 
@@ -49,6 +52,7 @@ To do
 Doing
 
 Done
+
 
 Resultat final
 
