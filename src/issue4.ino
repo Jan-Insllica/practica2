@@ -1,76 +1,53 @@
-int ldrPin = 34;
-int ledPin = 25;
+const int tempPin = 2;
+const int ldrPin = 4;
+const int ledPin = 25;
 
+float temperatura = 0.0;
+int valorTemp = 0;
 int valorLDR = 0;
-int llindar = 2500;
-
-bool controlAutomatic = true;
-
-void mostrarMenu() {
-  Serial.println("----- MENU -----");
-  Serial.println("1 - Llegir valor LDR");
-  Serial.println("2 - Estat del sistema");
-  Serial.println("3 - Encendre LED manual");
-  Serial.println("4 - Apagar LED manual");
-  Serial.println("m - Mostrar menu");
-  Serial.println("----------------");
-}
 
 void setup() {
-  Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
-
-  mostrarMenu();
+  Serial.begin(115200);
 }
 
 void loop() {
-  // Lectura contínua
+  valorTemp = analogRead(tempPin);
+  float voltage = valorTemp * (3.3 / 4095.0); 
+  temperatura = voltage * 100.0;
+
   valorLDR = analogRead(ldrPin);
 
-  // Control automàtic
-  if (controlAutomatic) {
-    if (valorLDR > llindar) {
-      digitalWrite(ledPin, HIGH);
-    } else {
-      digitalWrite(ledPin, LOW);
-    }
+  if (temperatura > 15.0) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("ALERTA: Sobreescalfament CPD!");
+  } else {
+    digitalWrite(ledPin, LOW);
   }
 
-  // Llegir comandes del Serial
+  if (valorLDR > 1000) { 
+    Serial.println("AVÍS: Porta oberta o llum encesa");
+  }
+
   if (Serial.available()) {
-    char opcio = Serial.read();
-
-    switch (opcio) {
-      case '1':
-        Serial.print("Valor LDR: ");
-        Serial.println(valorLDR);
-        break;
-
-      case '2':
-        if (valorLDR > llindar) {
-          Serial.println("⚠️ PERILL: Foscor");
-        } else {
-          Serial.println("✅ Llum correcta");
-        }
-        break;
-
-      case '3':
-        controlAutomatic = false;
-        digitalWrite(ledPin, HIGH);
-        Serial.println("LED encès manualment");
-        break;
-
-      case '4':
-        controlAutomatic = false;
-        digitalWrite(ledPin, LOW);
-        Serial.println("LED apagat manualment");
-        break;
-
-      case 'm':
-        mostrarMenu();
-        break;
+    String linea = Serial.readStringUntil('\n');
+    linea.trim();
+    linea.toLowerCase();
+    if (linea == "status"){
+      Serial.print("Temperatura: ");
+      Serial.print(temperatura);
+      Serial.println(" ºC");
+      Serial.print("Lluminositat: ");
+      Serial.println(valorLDR);
+    } else if (linea == "off" and digitalRead(25) == HIGH) {
+      digitalWrite(ledPin, LOW);
+      Serial.println("Led apagat manualment");
+    } else if (linea == "off" and digitalRead(25) == LOW){
+      
+    } else {
+      Serial.println("Error: ordre desconeguda.");
     }
   }
-
-  delay(200);
+  delay(2000);
+  
 }
