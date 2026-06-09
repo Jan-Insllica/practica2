@@ -13,28 +13,6 @@ Quan la temperatura supera els 25 °C, el sistema activa un LED d’alerta i mos
 A més, l’usuari pot interactuar amb el sistema a través del Monitor Sèrie enviant comandes per consultar l’estat actual dels sensors o apagar manualment el LED d’alerta.
 
 
-Funcionament del sistema
-
-Configuració de la comunicació sèrie a una velocitat de 115200 baud.
-
-Enviament d’un missatge inicial indicant que el sistema està preparat per funcionar.
-
-Lectura contínua dels valors analògics proporcionats pel sensor LM35 i el sensor LDR.
-
-Conversió de la lectura del LM35 a temperatura en graus centígrads.
-
-Comprovació permanent dels llindars establerts:
-
-Si la temperatura supera els 25 °C, s’encén el LED i es mostra un missatge d’alerta.
-Si el sensor LDR detecta llum, es mostra un missatge d’avís.
-
-Supervisió de les dades rebudes des del Monitor Sèrie.
-
-Execució de les accions corresponents segons la comanda introduïda per l’usuari.
-
-Retorn d’un missatge informatiu indicant el resultat de cada operació.
-
-
 Comandes admeses
 
 STATUS: mostra la temperatura actual i el nivell de llum detectat.
