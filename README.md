@@ -32,7 +32,7 @@ Doing
 Done
 
 
-Resultat final
+Resultat final:
 
 El sistema permet monitoritzar en temps real les condicions ambientals d’una sala de servidors.
 
