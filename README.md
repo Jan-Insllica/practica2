@@ -39,3 +39,5 @@ El sistema permet monitoritzar en temps real les condicions ambientals d’una s
 L’usuari pot consultar l’estat dels sensors mitjançant el Monitor Sèrie, rebre avisos automàtics davant situacions de risc i controlar manualment el LED d’alerta.
 
 El funcionament és estable i permet automatitzar la vigilància bàsica d’un CPD utilitzant sensors analògics connectats a una placa ESP32.
+
+Video demostratiu: https://drive.google.com/file/d/1rSZj1i23Elnkx3_I2WldFrL5e0HwUscJ/view?usp=sharing
